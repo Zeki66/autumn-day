@@ -3,414 +3,274 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>我在秋假外出的一天</title>
+<title>我在秋假外出的一天 · 香港暮色</title>
+<meta name="description" content="秋假的傍晚，香港的天空像被打翻的调色盘。中环的灯火、海面的倒影与对岸的 ICC，构成这一天的黄昏。">
+<meta property="og:title" content="我在秋假外出的一天 · 香港暮色">
+<meta property="og:description" content="秋假的傍晚，香港的天空像被打翻的调色盘。">
+<meta property="og:image" content="https://zeki66.github.io/autumn-day/images/central-dusk.jpg">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🍁</text></svg>">
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; }
+
   :root {
-    --brown: #8b4a2b;
-    --orange: #e8853d;
-    --orange-light: #f6b27a;
-    --cream: #fff8f0;
-    --card: #ffffff;
-    --text: #4a352a;
-    --muted: #a08a7a;
+    --ink: #453a44;
+    --ink-soft: #6f6472;
+    --muted: #9d8fa3;
+    --accent: #9a5b7a;
+    --gold: #c08a4a;
   }
+
+  html { -webkit-text-size-adjust: 100%; }
+
   body {
-    font-family: "PingFang SC", "Microsoft YaHei", "Hiragino Sans GB", sans-serif;
-    background: linear-gradient(180deg, #fff8f0 0%, #fdeedd 60%, #fbe3c8 100%);
-    color: var(--text);
-    min-height: 100vh;
-    padding-bottom: 80px;
+    font-family: "PingFang SC", "HarmonyOS Sans SC", "Microsoft YaHei", "Hiragino Sans GB", system-ui, sans-serif;
+    color: var(--ink);
+    background:
+      radial-gradient(1200px 600px at 12% -8%, #fde9e6 0%, rgba(253,233,230,0) 62%),
+      radial-gradient(900px 520px at 92% 4%, #e9e1f4 0%, rgba(233,225,244,0) 60%),
+      linear-gradient(180deg, #fffaf6 0%, #fdf3ef 42%, #f4e9ef 100%);
+    background-attachment: fixed;
+    line-height: 1.9;
+    -webkit-font-smoothing: antialiased;
   }
-  /* 背景飘落叶子 */
-  .leaf-deco {
+
+  .leaf {
     position: fixed;
-    font-size: 28px;
-    opacity: .35;
+    font-size: 26px;
+    opacity: .28;
     pointer-events: none;
-    animation: fall 9s linear infinite;
     z-index: 0;
+    animation: drift 11s linear infinite;
   }
-  .leaf-deco:nth-child(1) { left: 8%;  animation-delay: 0s; }
-  .leaf-deco:nth-child(2) { left: 28%; animation-delay: 3s; font-size: 22px; }
-  .leaf-deco:nth-child(3) { left: 55%; animation-delay: 5.5s; }
-  .leaf-deco:nth-child(4) { left: 78%; animation-delay: 2s; font-size: 24px; }
-  .leaf-deco:nth-child(5) { left: 92%; animation-delay: 7s; font-size: 20px; }
-  @keyframes fall {
-    0%   { transform: translateY(-40px) rotate(0deg); }
-    100% { transform: translateY(105vh) rotate(360deg); }
+  .leaf:nth-child(1) { left: 6%;  animation-delay: 0s;   font-size: 24px; }
+  .leaf:nth-child(2) { left: 33%; animation-delay: 4s;   font-size: 19px; }
+  .leaf:nth-child(3) { left: 72%; animation-delay: 7.5s; font-size: 22px; }
+  .leaf:nth-child(4) { left: 90%; animation-delay: 2.5s; font-size: 17px; }
+  @keyframes drift {
+    0%   { transform: translateY(-50px) rotate(0deg); }
+    100% { transform: translateY(105vh) rotate(320deg); }
   }
 
-  header {
-    text-align: center;
-    padding: 56px 20px 28px;
+  .wrap {
     position: relative;
     z-index: 1;
-  }
-  header .badge { font-size: 34px; }
-  header h1 {
-    font-size: clamp(28px, 5vw, 42px);
-    color: var(--brown);
-    letter-spacing: 2px;
-    margin: 10px 0 12px;
-    text-shadow: 0 2px 0 rgba(255,255,255,.6);
-  }
-  header .subtitle {
-    color: var(--muted);
-    font-size: 15px;
-  }
-
-  .toolbar {
-    display: flex;
-    justify-content: center;
-    gap: 16px;
-    flex-wrap: wrap;
-    margin: 10px auto 34px;
-    position: relative;
-    z-index: 1;
-  }
-  .btn {
-    border: none;
-    cursor: pointer;
-    font-size: 15px;
-    border-radius: 999px;
-    padding: 12px 22px;
-    transition: transform .15s ease, box-shadow .15s ease, background .15s ease;
-    font-family: inherit;
-  }
-  .btn:active { transform: scale(.96); }
-  .btn-text {
-    background: #fff;
-    color: var(--orange);
-    border: 1.5px solid var(--orange-light);
-  }
-  .btn-text:hover { background: #fff3e8; }
-  .btn-img {
-    background: linear-gradient(135deg, var(--orange), #f0a05a);
-    color: #fff;
-    box-shadow: 0 6px 16px rgba(232,133,61,.35);
-  }
-  .btn-img:hover { box-shadow: 0 8px 20px rgba(232,133,61,.45); }
-  .btn.ghost { background: #f3ece6; color: var(--muted); }
-  .btn.primary { background: var(--orange); color: #fff; }
-
-  main {
-    max-width: 720px;
+    max-width: 760px;
     margin: 0 auto;
-    padding: 0 20px;
-    position: relative;
-    z-index: 1;
-    display: flex;
-    flex-direction: column;
-    gap: 22px;
+    padding: 72px 24px 96px;
   }
-  .empty {
-    text-align: center;
-    color: var(--muted);
-    background: rgba(255,255,255,.6);
-    border: 1.5px dashed var(--orange-light);
-    border-radius: 20px;
-    padding: 48px 24px;
+
+  header { text-align: center; }
+
+  .kicker {
+    display: inline-block;
+    font-size: 12.5px;
+    letter-spacing: .32em;
+    text-indent: .32em;
+    color: var(--accent);
+    text-transform: uppercase;
+    border-bottom: 1px solid rgba(154,91,122,.32);
+    padding-bottom: 8px;
+    margin-bottom: 26px;
+  }
+
+  h1 {
+    font-family: "Songti SC", "Source Han Serif SC", "Noto Serif SC", "SimSun", serif;
+    font-size: clamp(30px, 6.4vw, 50px);
+    font-weight: 600;
+    letter-spacing: .06em;
+    line-height: 1.35;
+    color: #4b3644;
+    margin-bottom: 18px;
+  }
+
+  .sub {
     font-size: 15px;
-    line-height: 1.9;
+    color: var(--ink-soft);
+    letter-spacing: .04em;
   }
 
-  .card {
-    background: var(--card);
-    border-radius: 20px;
-    padding: 24px 24px 18px;
-    box-shadow: 0 8px 24px rgba(139,74,43,.12);
-    position: relative;
-    border-left: 5px solid var(--orange-light);
-    animation: pop .3s ease;
-  }
-  @keyframes pop {
-    from { opacity: 0; transform: translateY(12px); }
-    to   { opacity: 1; transform: translateY(0); }
-  }
-  .card.image { border-left-color: #d9a441; }
-  .del {
-    position: absolute;
-    top: 14px; right: 14px;
-    width: 30px; height: 30px;
-    border-radius: 50%;
-    border: none;
-    background: #f6ece4;
+  .meta {
+    margin-top: 22px;
+    font-size: 13px;
     color: var(--muted);
-    cursor: pointer;
-    font-size: 14px;
-    line-height: 1;
-    transition: background .15s, color .15s;
+    letter-spacing: .06em;
+    display: flex;
+    gap: 14px;
+    justify-content: center;
+    flex-wrap: wrap;
   }
-  .del:hover { background: #fbe0d2; color: #c0392b; }
+  .meta span { white-space: nowrap; }
+  .meta span + span::before {
+    content: "·";
+    margin-right: 14px;
+    color: rgba(157,143,163,.7);
+  }
 
-  .card-title {
-    font-size: 19px;
-    color: var(--brown);
-    margin-bottom: 10px;
-    padding-right: 30px;
+  .rule {
+    width: 56px;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(154,91,122,.55), transparent);
+    margin: 44px auto 0;
   }
-  .card-body {
-    font-size: 15.5px;
-    line-height: 1.9;
-    white-space: normal;
+
+  /* 文字区 */
+  article { margin-top: 46px; }
+
+  p.body {
+    text-indent: 2em;
+    font-size: 17.5px;
+    line-height: 2.2;
+    color: var(--ink);
+    letter-spacing: .02em;
+    margin-bottom: 1.25em;
   }
-  .card-img {
-    width: 100%;
-    border-radius: 14px;
+  p.body:last-child { margin-bottom: 0; }
+
+  /* 照片区 */
+  .gallery {
+    margin-top: 78px;
+  }
+  .section-label {
+    text-align: center;
+    font-size: 12.5px;
+    letter-spacing: .3em;
+    text-indent: .3em;
+    color: var(--muted);
+    text-transform: uppercase;
+    margin-bottom: 34px;
+  }
+  .section-label::after {
+    content: "";
     display: block;
-    cursor: zoom-in;
-    margin-bottom: 12px;
-    max-height: 420px;
-    object-fit: cover;
+    width: 40px;
+    height: 1px;
+    background: rgba(154,91,122,.35);
+    margin: 16px auto 0;
   }
-  .card-caption {
-    font-size: 14.5px;
-    color: var(--text);
-    background: #fdf3e8;
-    border-radius: 10px;
-    padding: 10px 14px;
+
+  figure { margin: 0 0 44px; }
+  figure:last-child { margin-bottom: 0; }
+  figure .frame {
+    background: #fff;
+    padding: 12px;
+    border-radius: 6px;
+    box-shadow:
+      0 1px 2px rgba(69,58,68,.08),
+      0 18px 40px -18px rgba(108,74,96,.42);
   }
-  .card-time {
+  figure img {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: 2px;
+  }
+  figure.portrait img { max-width: 460px; margin: 0 auto; }
+  figcaption {
     margin-top: 14px;
+    font-size: 13px;
+    line-height: 1.8;
+    color: var(--ink-soft);
+    text-align: center;
+    letter-spacing: .04em;
+  }
+  figcaption .loc {
+    color: var(--gold);
+    font-size: 12.5px;
+    letter-spacing: .12em;
+    margin-right: 8px;
+  }
+
+  /* 结尾 */
+  .end { margin-top: 66px; text-align: center; }
+  .end .dot { color: var(--muted); letter-spacing: .6em; font-size: 13px; }
+  .end .signed {
+    margin-top: 26px;
+    font-family: "Songti SC", "Source Han Serif SC", serif;
+    font-size: 14px;
+    color: var(--ink-soft);
+    letter-spacing: .12em;
+  }
+
+  footer {
+    margin-top: 78px;
+    padding-top: 26px;
+    border-top: 1px solid rgba(154,91,122,.16);
+    text-align: center;
     font-size: 12.5px;
     color: var(--muted);
+    letter-spacing: .08em;
   }
 
-  /* 模态框 */
-  .modal {
-    position: fixed;
-    inset: 0;
-    background: rgba(74,53,42,.45);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 20px;
-    z-index: 10;
-  }
-  .modal.hidden { display: none; }
-  .modal-card {
-    background: #fff;
-    border-radius: 22px;
-    padding: 28px;
-    width: 100%;
-    max-width: 440px;
-    box-shadow: 0 20px 50px rgba(0,0,0,.25);
-    animation: pop .25s ease;
-  }
-  .modal-card h3 {
-    color: var(--brown);
-    margin-bottom: 18px;
-    font-size: 18px;
-  }
-  .modal-card input,
-  .modal-card textarea {
-    width: 100%;
-    border: 1.5px solid #ecd9c8;
-    border-radius: 12px;
-    padding: 12px 14px;
-    font-size: 15px;
-    font-family: inherit;
-    color: var(--text);
-    margin-bottom: 14px;
-    outline: none;
-    resize: vertical;
-    background: #fffdfa;
-  }
-  .modal-card input:focus,
-  .modal-card textarea:focus { border-color: var(--orange); }
-  .modal-card input[type="file"] { padding: 10px; }
-  .modal-actions {
-    display: flex;
-    justify-content: flex-end;
-    gap: 12px;
-    margin-top: 6px;
+  @media (max-width: 560px) {
+    .wrap { padding: 52px 20px 72px; }
+    p.body { font-size: 16.5px; line-height: 2.1; }
+    .gallery { margin-top: 56px; }
+    figure { margin-bottom: 34px; }
+    figure .frame { padding: 8px; }
+    .meta { font-size: 12px; gap: 10px; }
   }
 
-  /* 大图查看 */
-  #lightbox { background: rgba(0,0,0,.8); }
-  #lightbox img {
-    max-width: 92%;
-    max-height: 88%;
-    border-radius: 14px;
-    box-shadow: 0 20px 60px rgba(0,0,0,.5);
-  }
-
-  @media (max-width: 480px) {
-    .card { padding: 20px 18px 14px; }
-    .modal-card { padding: 22px; }
+  @media (prefers-reduced-motion: reduce) {
+    .leaf { animation: none; opacity: .2; }
   }
 </style>
 </head>
 <body>
-  <span class="leaf-deco">🍁</span>
-  <span class="leaf-deco">🍂</span>
-  <span class="leaf-deco">🍁</span>
-  <span class="leaf-deco">🍂</span>
-  <span class="leaf-deco">🍁</span>
+  <span class="leaf">🍁</span>
+  <span class="leaf">🍂</span>
+  <span class="leaf">🍁</span>
+  <span class="leaf">🍂</span>
 
-  <header>
-    <div class="badge">🍁</div>
-    <h1>我在秋假外出的一天</h1>
-    <p class="subtitle">把这一天的风景、照片和心情，一页一页记下来 🍂</p>
-  </header>
-
-  <div class="toolbar">
-    <button id="addTextBtn" class="btn btn-text">✍️ 写一段文字</button>
-    <button id="addImgBtn" class="btn btn-img">📷 添加照片</button>
-  </div>
-
-  <main id="timeline"></main>
-
-  <!-- 文字模态框 -->
-  <div id="textModal" class="modal hidden">
-    <div class="modal-card">
-      <h3>记录一段心情</h3>
-      <input id="textTitle" type="text" maxlength="30" placeholder="小标题（可选）">
-      <textarea id="textBody" rows="5" placeholder="今天去了哪里？看到了什么？心情怎么样……"></textarea>
-      <div class="modal-actions">
-        <button class="btn ghost" data-close>取消</button>
-        <button id="saveText" class="btn primary">保存</button>
+  <div class="wrap">
+    <header>
+      <div class="kicker">Autumn Break</div>
+      <h1>我在秋假外出的一天</h1>
+      <p class="sub">把这一天的风景、照片和心情，一页一页记下来</p>
+      <div class="meta">
+        <span>香港 · 中环至维港</span>
+        <span>秋假傍晚</span>
+        <span>三张照片</span>
       </div>
+      <div class="rule"></div>
+    </header>
+
+    <article>
+      <p class="body">秋假的傍晚，我撞进了一片粉紫色的暮光里。香港的天空像被打翻的调色盘，将中环的那钢铁森林染上了一层温柔的滤镜。</p>
+      <p class="body">我漫步在海风里，抬头仰望。白日里冷峻的玻璃幕墙，此刻透出暖黄灯光，如一柄刺破苍穹的利剑，又在海面上投下波光粼粼的倒影。长廊上的绿植与游人的剪影，让这宏大的城市有了呼吸感。</p>
+      <p class="body">夜色渐浓，隔着一湾墨色的海水，对岸的 ICC 像一座孤傲的灯塔。游船划过，水波揉碎了满海星光。在这繁华与幽暗的拉扯中，我突然感到一种抽离的宁静。这一天，我在忙忙碌碌的缝隙里，获得半日清闲。</p>
+    </article>
+
+    <section class="gallery">
+      <div class="section-label">Photographs</div>
+
+      <figure class="landscape">
+        <div class="frame">
+          <img src="images/central-dusk.jpg" alt="暮色中的中环高楼群，天空呈粉紫色" loading="lazy" width="1600" height="1200">
+        </div>
+        <figcaption><span class="loc">暮光</span>中环，粉紫色天空下的钢铁森林</figcaption>
+      </figure>
+
+      <figure class="portrait">
+        <div class="frame">
+          <img src="images/ifc-evening.jpg" alt="仰视国际金融中心二期，玻璃幕墙透出暖黄灯光，下方是海滨长廊" loading="lazy" width="1200" height="1600">
+        </div>
+        <figcaption><span class="loc">仰望</span>国际金融中心，幕墙透出暖黄灯光</figcaption>
+      </figure>
+
+      <figure class="landscape">
+        <div class="frame">
+          <img src="images/icc-night.jpg" alt="隔着维港望向对岸，ICC 高楼与西九龙天际线在夜色中亮起" loading="lazy" width="1600" height="1150">
+        </div>
+        <figcaption><span class="loc">夜色</span>维港对岸，ICC 与西九龙天际线</figcaption>
+      </figure>
+    </section>
+
+    <div class="end">
+      <div class="dot">· · ·</div>
+      <div class="signed">在忙忙碌碌的缝隙里，获得半日清闲</div>
     </div>
+
+    <footer>秋假日落 · 香港 · 照片与文字为本人拍摄与记录</footer>
   </div>
-
-  <!-- 图片模态框 -->
-  <div id="imgModal" class="modal hidden">
-    <div class="modal-card">
-      <h3>添加一张照片</h3>
-      <input type="file" id="imgInput" accept="image/*">
-      <input id="imgCaption" type="text" maxlength="50" placeholder="图片说明（可选）">
-      <div class="modal-actions">
-        <button class="btn ghost" data-close>取消</button>
-        <button id="saveImg" class="btn primary">保存</button>
-      </div>
-    </div>
-  </div>
-
-  <!-- 大图查看 -->
-  <div id="lightbox" class="modal hidden">
-    <img id="lightboxImg" alt="大图预览">
-  </div>
-
-<script>
-  const STORAGE_KEY = 'autumn-day-items-v1';
-  let items = load();
-
-  const timeline   = document.getElementById('timeline');
-  const textModal  = document.getElementById('textModal');
-  const imgModal   = document.getElementById('imgModal');
-  const lightbox   = document.getElementById('lightbox');
-  const lightboxImg= document.getElementById('lightboxImg');
-  const textTitle  = document.getElementById('textTitle');
-  const textBody   = document.getElementById('textBody');
-  const imgInput   = document.getElementById('imgInput');
-  const imgCaption = document.getElementById('imgCaption');
-  let pendingImage = null;
-
-  function load() {
-    try { return JSON.parse(localStorage.getItem(STORAGE_KEY)) || []; }
-    catch (e) { return []; }
-  }
-  function persist() {
-    try { localStorage.setItem(STORAGE_KEY, JSON.stringify(items)); }
-    catch (e) { alert('图片较大，本次未能本地保存，但页面上仍可查看。'); }
-  }
-  function uid() {
-    return Date.now().toString(36) + Math.random().toString(36).slice(2, 6);
-  }
-  function fmtTime(ts) {
-    const d = new Date(ts);
-    const hh = String(d.getHours()).padStart(2, '0');
-    const mm = String(d.getMinutes()).padStart(2, '0');
-    return `${d.getMonth() + 1}月${d.getDate()}日 ${hh}:${mm}`;
-  }
-  function escapeHtml(s) {
-    return String(s || '').replace(/[&<>"']/g, c => ({
-      '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
-    }[c]));
-  }
-
-  function render() {
-    timeline.innerHTML = '';
-    if (items.length === 0) {
-      timeline.innerHTML = '<div class="empty">🍂 还没有记录<br>点击上方按钮，写下今天的第一段文字，或上传一张照片吧～</div>';
-      return;
-    }
-    items.forEach(item => {
-      const card = document.createElement('article');
-      card.className = 'card ' + item.type;
-
-      if (item.type === 'text') {
-        card.innerHTML =
-          '<button class="del" title="删除">✕</button>' +
-          (item.title ? `<h2 class="card-title">${escapeHtml(item.title)}</h2>` : '') +
-          `<p class="card-body">${escapeHtml(item.body).replace(/\n/g, '<br>')}</p>` +
-          `<div class="card-time">🕐 ${fmtTime(item.ts)}</div>`;
-      } else {
-        card.innerHTML =
-          '<button class="del" title="删除">✕</button>' +
-          `<img class="card-img" src="${item.dataUrl}" alt="${escapeHtml(item.caption || '照片')}">` +
-          (item.caption ? `<div class="card-caption">${escapeHtml(item.caption)}</div>` : '') +
-          `<div class="card-time">🕐 ${fmtTime(item.ts)}</div>`;
-      }
-
-      card.querySelector('.del').onclick = () => {
-        if (confirm('确定删除这条记录吗？')) {
-          items = items.filter(i => i.id !== item.id);
-          persist(); render();
-        }
-      };
-      const img = card.querySelector('.card-img');
-      if (img) img.onclick = () => { lightboxImg.src = item.dataUrl; lightbox.classList.remove('hidden'); };
-      timeline.appendChild(card);
-    });
-  }
-
-  function openModal(el) { el.classList.remove('hidden'); }
-  function closeModal(el) { el.classList.add('hidden'); }
-
-  document.getElementById('addTextBtn').onclick = () => {
-    textTitle.value = '';
-    textBody.value = '';
-    openModal(textModal);
-    textBody.focus();
-  };
-  document.getElementById('saveText').onclick = () => {
-    const body = textBody.value.trim();
-    if (!body) { alert('先写点内容吧～'); return; }
-    items.push({ id: uid(), type: 'text', title: textTitle.value.trim(), body, ts: Date.now() });
-    persist(); render(); closeModal(textModal);
-  };
-
-  document.getElementById('addImgBtn').onclick = () => {
-    imgInput.value = '';
-    imgCaption.value = '';
-    pendingImage = null;
-    openModal(imgModal);
-  };
-  imgInput.onchange = e => {
-    const f = e.target.files[0];
-    if (!f) return;
-    const reader = new FileReader();
-    reader.onload = ev => { pendingImage = ev.target.result; };
-    reader.readAsDataURL(f);
-  };
-  document.getElementById('saveImg').onclick = () => {
-    if (!pendingImage) { alert('请先选择一张图片'); return; }
-    items.push({ id: uid(), type: 'image', dataUrl: pendingImage, caption: imgCaption.value.trim(), ts: Date.now() });
-    persist(); render(); closeModal(imgModal);
-  };
-
-  document.querySelectorAll('[data-close]').forEach(btn => {
-    btn.onclick = () => closeModal(btn.closest('.modal'));
-  });
-  [textModal, imgModal].forEach(m => {
-    m.addEventListener('click', e => { if (e.target === m) closeModal(m); });
-  });
-  lightbox.onclick = () => lightbox.classList.add('hidden');
-
-  render();
-</script>
 </body>
 </html>
